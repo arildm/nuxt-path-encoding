@@ -1,20 +1,19 @@
 # nuxt-path-encoding
 
-## Build Setup
+Illustrates a Nuxt bug.
 
-```bash
-# install dependencies
-$ yarn install
+## Significant code
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+- [pages/_slug.vue](pages/_slug.vue)
+- A nuxt-link on [pages/index.vue](pages/index.vue) links to the slug page with a non-ascii slug
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+## Reproduction
 
-# generate static project
-$ yarn generate
-```
+1. `yarn generate`
+2. Serve `dist` folder: `http-server dist`
+3. Visit `/`, click the link, it loads fine
+4. Refresh on the slug page
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+Expected outcome: The page content (a h1 heading) will show
+
+Actual outcome: The page content flashes but disappears
